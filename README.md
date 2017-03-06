@@ -32,7 +32,7 @@ where
 *filepath*: the path of PNG images or KLG file
 
 ##Data Format
-* The PNG images must be saved in separate folders: all depth images should be saved in a *depth* folder, while all color images must be saved in *rgb* folder. And all images are named as X.png where X is the frame index number starting from 0. For instance:
+* The PNG images must be saved in separate folders: all depth images should be saved in a *depth* folder, while all color images must be saved in *rgb* folder. And all images are named as *X*.png where *X* is the frame index number starting from 0. For instance:
 ```bash
 rgbd
  - depth

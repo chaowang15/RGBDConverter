@@ -7,7 +7,7 @@
 *.klg
 *.ply
 
-# CMake Files
+# CMake files
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
@@ -16,6 +16,8 @@ cmake_install.cmake
 install_manifest.txt
 CTestTestfile.cmake
 
+# Mac OSX files
+.DS_Store
 
 # User-specific files
 *.suo

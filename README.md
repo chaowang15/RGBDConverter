@@ -11,7 +11,7 @@ This code is written in C++ and is tested successfully in Visual Studio 2013 in 
 ##Build
 To compile the code:
 * In Windows, use Visual Studio to open .sln file and compile.
-* In Linux/Mac OS, use the standard approach
+* In Linux, use the standard approach
 ```
   $ mkdir build
   $ cd build

@@ -1,7 +1,7 @@
 # RGBDConverter
-This code converts RGB-D data between PNG images and a single KLG log file used in [ElasticFusion] (https://github.com/mp3guy/ElasticFusion) code. KLG file contains the rgb and depth data from all sequences in compressed binary format.
+This code converts RGB-D data between PNG images and a single KLG log file used in [ElasticFusion] (https://github.com/mp3guy/ElasticFusion) code. KLG file contains the rgb and depth data from all sequences in compressed binary format. Another code [RGBDCapture] (https://github.com/chaowang15/RGBDCapture) can be used to scan and save RGB-D data in PNG images.
 
-This code is written in C++ and is tested successfully in Visual Studio 2013 in Windows and Ubuntu 14.04.
+This code is written in C++ and is tested successfully in Visual Studio 2013 in Windows, Ubuntu 14.04 and Mac OS.
 
 ##Dependencies
 - OpenCV 2.4.X -- read and write image files
@@ -11,7 +11,7 @@ This code is written in C++ and is tested successfully in Visual Studio 2013 in 
 ##Build
 To compile the code:
 * In Windows, use Visual Studio to open .sln file and compile.
-* In Linux, use the standard approach
+* In Linux/Mac OS, use the standard approach
 ```
   $ mkdir build
   $ cd build

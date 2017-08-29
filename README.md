@@ -1,14 +1,14 @@
 # RGBDConverter
-This code converts RGB-D data between PNG images and a single KLG log file used in [ElasticFusion] (https://github.com/mp3guy/ElasticFusion) code. KLG file contains the rgb and depth data from all sequences in compressed binary format. Another code [RGBDCapture] (https://github.com/chaowang15/RGBDCapture) can be used to scan and save RGB-D data in PNG images.
+This code converts RGB-D data between PNG images and a single KLG log file used in [ElasticFusion](https://github.com/mp3guy/ElasticFusion) code. KLG file contains the rgb and depth data from all sequences in compressed binary format. Another code [RGBDCapture](https://github.com/chaowang15/RGBDCapture) can be used to scan and save RGB-D data in PNG images.
 
 This code is written in C++ and is tested successfully in Visual Studio 2013 in Windows, Ubuntu 14.04 and Mac OS.
 
-##Dependencies
+## Dependencies
 - OpenCV 2.4.X -- read and write image files
 - Boost (>= 1.50) -- create folders
 - Zlib -- compress image
 
-##Build
+## Build
 To compile the code:
 * In Windows, use Visual Studio to open .sln file and compile.
 * In Linux, use the standard approach
@@ -20,7 +20,7 @@ To compile the code:
 ```
 Note to modify corresponding paths of dependencies.
 
-##Usage
+## Usage
 ```bash
 RGBDConverter -option filepath
 ```
@@ -31,7 +31,7 @@ where
 
 *filepath*: the path of PNG images or KLG file
 
-##Data Format
+## Data Format
 * The PNG images must be saved in separate folders: all depth images should be saved in a *depth* folder, while all color images must be saved in *rgb* folder. And all images are named as *X*.png where *X* is the frame index number starting from 0. For instance:
 ```bash
 rgbd

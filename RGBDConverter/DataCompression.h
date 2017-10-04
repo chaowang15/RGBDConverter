@@ -5,8 +5,6 @@
 #include <iostream>
 #include <stdint.h>
 #include <zlib.h>
-#include "global.h"
-
 
 using namespace cv;
 using namespace std;
@@ -18,13 +16,18 @@ public:
 
 	~DataCompression();
 
+	void initDepthMemory(int originalSize){
+		m_depthOriginalSize = originalSize;
+		m_depthCompressBuf = new uint8_t[m_depthOriginalSize];
+	}
+
 	void compressColor(cv::Vec<unsigned char, 3> * rgb_data, int width, int height);
 
 	void compressDepth(unsigned char* depthDataPtr);
 	
-	void writeHeader(string klgFilename, int frameNum, int depthWidth, int depthHeight, int colorWidth, int colorHeight);
+	void writeHeader(string klgFilename, int frameNum = 0);
 
-	void writeBody(int32_t timestamp);
+	void writeBody(int64_t timestamp);
 
 	void closeKLGFile(int frameNum);
 

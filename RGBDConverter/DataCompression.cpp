@@ -32,29 +32,32 @@ void DataCompression::compressDepth(unsigned char* depthDataPtr){
 	// value that is large enough to hold all compressed data.
 	m_depthCompressSize = m_depthOriginalSize;
 	int res = compress2(m_depthCompressBuf, &m_depthCompressSize, depthDataPtr, m_depthOriginalSize, Z_BEST_SPEED);
+	//cout << m_depthOriginalSize << " " << m_depthCompressSize << endl;
 	if (res != 0)
 		cerr << "WARNING: Compression Error !" << endl;
 }
 
 
-void DataCompression::writeHeader(string klgFilename, int frameNum, int depthWidth, int depthHeight, int colorWidth, int colorHeight)
+void DataCompression::writeHeader(string klgFilename, int frameNum)
 {
 	m_file = fopen(klgFilename.c_str(), "wb+");
-	fwrite(&frameNum, sizeof(int32_t), 1, m_file); // write the number of frames as 0 in the head and update it later after scanning
-	//fwrite(&deviceNum, sizeof(int32_t), 1, file); 
-	fwrite(&depthWidth, sizeof(int32_t), 1, m_file);
-	fwrite(&depthHeight, sizeof(int32_t), 1, m_file);
-	fwrite(&colorWidth, sizeof(int32_t), 1, m_file);
-	fwrite(&colorHeight, sizeof(int32_t), 1, m_file);
+	// We usually write the number of frames as 0 here temporarily,
+	// and update it later after scanning.
+	fwrite(&frameNum, sizeof(int32_t), 1, m_file);
 
-	// NOTE: we save one depth value with 16-bit storage
-	m_depthOriginalSize = depthWidth * depthHeight * sizeof(DepthValueType);
-	m_depthCompressBuf = new uint8_t[m_depthOriginalSize];
+	// The klg file used in ElasticFusion code can NOT contain resolution
+	// parameters, which are taken as the code input, Here we still
+	// leave the following codes just in case you need to compress these 
+	// parameters for some other applications.
+	//fwrite(&depthWidth, sizeof(int32_t), 1, m_file);
+	//fwrite(&depthHeight, sizeof(int32_t), 1, m_file);
+	//fwrite(&colorWidth, sizeof(int32_t), 1, m_file);
+	//fwrite(&colorHeight, sizeof(int32_t), 1, m_file);
 }
 
-void DataCompression::writeBody(int32_t timestamp)
+void DataCompression::writeBody(int64_t timestamp)
 {
-	fwrite(&timestamp, sizeof(int32_t), 1, m_file);
+	fwrite(&timestamp, sizeof(int64_t), 1, m_file);
 	fwrite(&m_depthCompressSize, sizeof(int32_t), 1, m_file);
 	fwrite(&m_colorCompressSize, sizeof(int32_t), 1, m_file);
 	fwrite((unsigned char *)m_depthCompressBuf, m_depthCompressSize, 1, m_file);

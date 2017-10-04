@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="DataCompression.h" />
-    <ClInclude Include="global.h" />
     <ClInclude Include="RGBDConverter.h" />
   </ItemGroup>
   <ItemGroup>

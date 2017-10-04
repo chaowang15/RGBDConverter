@@ -1,5 +1,7 @@
 # RGBDConverter
-This code converts RGB-D data between PNG/JPG images and a compressed file format KLG used in [ElasticFusion](https://github.com/mp3guy/ElasticFusion) code. Another code [RGBDCapture](https://github.com/chaowang15/RGBDCapture) can be used to scan and save RGB-D data in PNG images.
+This code converts RGB-D data between PNG/JPG images and a compressed file format KLG used in [ElasticFusion](https://github.com/mp3guy/ElasticFusion) code. The KLG file contains compressed image data and is more convenient than png images in the data I/O.
+
+Another code [RGBDCapture](https://github.com/chaowang15/RGBDCapture) can be used to scan and save RGB-D data in PNG images.
 
 This code is written in C++ and has already been tested successfully in Visual Studio 2013 in Windows and Ubuntu 16.04.
 

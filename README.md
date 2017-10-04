@@ -38,5 +38,5 @@ where
 * *-a [ --association_file ]*: association/correspondence between depth and color timestamps (only used in -p2k). Do NOT add it if corresponding depth and color timestamps are exactly the same.
 
 ## Data Format
-* The PNG images are exactly the same as [TUM dataset](https://vision.in.tum.de/data/datasets/rgbd-dataset).
+* The format of PNG images are exactly the same as [TUM RGB-D dataset](https://vision.in.tum.de/data/datasets/rgbd-dataset). They must be put in separate folders *rgb* and *depth*.
 * See the source code or [Logger2 code](https://github.com/mp3guy/Logger2/blob/master/src/Logger2.cpp#L237) for details about information in KLG format.

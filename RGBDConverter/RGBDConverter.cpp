@@ -1,4 +1,5 @@
 #include "RGBDConverter.h"
+#include <fstream>
 
 bool RGBDConverter::readColorImage(string filename, unsigned char* colorPtr)
 {
@@ -54,13 +55,14 @@ void RGBDConverter::png2klg(string filepath, string association_file)
 	}
 	else
 	{
-		filepath += "\\";
+		filepath += "/";
 	}
 	size_t pos = klg_filename.find_last_of("/\\");
 	klg_filename = klg_filename.substr(pos + 1, klg_filename.length() - pos - 1) + ".klg";
 
 	// Get depth image resolution
-	boost::filesystem::path depthPath(filepath + "depth\\"), colorPath(filepath + "rgb\\");
+	boost::filesystem::path depthPath(filepath + "depth/"), colorPath(filepath + "rgb/");
+	cout << depthPath << endl << colorPath << endl;
 	if (!boost::filesystem::is_directory(depthPath) || !boost::filesystem::is_directory(colorPath))
 	{
 		cout << "WARNING: The input path \"" << filepath << "\" does not contain depth or rgb folder. Quiting..." << endl;
@@ -129,7 +131,7 @@ void RGBDConverter::png2klg(string filepath, string association_file)
 		// If there is association file as input, then it contains the correspondence between
 		// depth and color image timestamps. 
 		string tmp, timestamp_str;
-		ifstream readin(association_file, ios::in);
+		ifstream readin(association_file.c_str(), ios::in);
 		if (!readin.good())
 		{
 			cout << "WARNING: can NOT read the association file \"" << association_file << "\". Quiting..." << endl;

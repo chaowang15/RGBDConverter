@@ -28,11 +28,8 @@ void DataCompression::compressColor(cv::Vec<unsigned char, 3> * rgb_data, int wi
 }
 
 void DataCompression::compressDepth(unsigned char* depthDataPtr){
-	// NOTE: in order to use compress2(), you have to initialize the destination length (the 2nd parameter) a 
-	// value that is large enough to hold all compressed data.
-	m_depthCompressSize = m_depthOriginalSize;
+	m_depthCompressSize = m_depthOriginalSize; // initialize the depth size that is large enough to hold all compressed data.
 	int res = compress2(m_depthCompressBuf, &m_depthCompressSize, depthDataPtr, m_depthOriginalSize, Z_BEST_SPEED);
-	//cout << m_depthOriginalSize << " " << m_depthCompressSize << endl;
 	if (res != 0)
 		cerr << "WARNING: Compression Error !" << endl;
 }
@@ -66,8 +63,7 @@ void DataCompression::writeBody(int64_t timestamp)
 
 void DataCompression::closeKLGFile(int frameNum)
 {
-	// Update the header with number of frames
-	fseek(m_file, 0, SEEK_SET); // frame number is stored in 0th position
+	fseek(m_file, 0, SEEK_SET); // frame number is stored in the header at the 0th position
 	fwrite(&frameNum, sizeof(int32_t), 1, m_file);
 	fflush(m_file);
 	fclose(m_file);

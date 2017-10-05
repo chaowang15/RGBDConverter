@@ -65,7 +65,7 @@ int main(int argc, char** argv)
 	}
 	else if (vm.count("p2k"))
 	{
-		rgbdconverter.png2klg(file_path.string());
+		rgbdconverter.png2klg(file_path.string(), association_file.string());
 	}
 	return EXIT_SUCCESS;
 }

@@ -14,10 +14,10 @@ bool RGBDConverter::readColorImage(string filename, unsigned char* colorPtr)
 		{
 			int tmp = (i * cols + j) * 3;
 			Vec3b bgr = colorImg.at<Vec3b>(i, j);
-			for (int j = 0; j < 3; ++j)
+			for (int k = 0; k < 3; ++k)
 			{
 				// OpenCV loads color image in BGR order while we need RGB
-				colorPtr[tmp + 2 - j] = bgr(j);
+				colorPtr[tmp + 2 - k] = bgr(k);
 			}
 		}
 	}

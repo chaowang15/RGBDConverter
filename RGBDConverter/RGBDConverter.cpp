@@ -253,6 +253,7 @@ void RGBDConverter::klg2png(string filename)
 		// Write color image
 		string rgbImageName = colorFolder + to_string(timestamp) + ".png";
 		imwrite(rgbImageName, m);
+		cvReleaseMat(&p)
 	}
 	fclose(logFile);
 	delete[]rgbData;
